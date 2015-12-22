@@ -1,10 +1,2 @@
-Brlapi==0.6.3
-coverage==3.7.1
 Django==1.8.4
-LibAppArmor==2.10
-pycups==1.9.72
-pycurl==7.19.5.1
-pygobject==3.16.2
-pysmbc==1.0.15.4
-simplejson==3.8.0
-wheel==0.24.0
+
