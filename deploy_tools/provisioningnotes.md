@@ -20,6 +20,9 @@ eg, on Ubuntu:
 * see nginx.template.conf
 * replace SITENAME with, eg, staging.my-domain.com
 
+##uWSGI config
+*see uWSGI.template.conf
+
 ## Folder structure:
 Assume we have a user account at /home/username
 
@@ -30,3 +33,6 @@ Assume we have a user account at /home/username
          ├── source
          ├── static
          └── virtualenv
+
+
+Setup example available at https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-14-04
