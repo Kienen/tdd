@@ -17,7 +17,7 @@ class ItemFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEqual(
             form.errors['text'],
-            ["You can't have an empty list item"]
+            [EMPTY_ITEM_ERROR]
         )
 
     def test_form_validation_for_blank_items(self):
