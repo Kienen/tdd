@@ -14,6 +14,9 @@ def deploy():
     _update_static_files(source_folder)
     _update_database(source_folder)
 
+    sudo('service uwsgi restart')
+    sudo('service nginx restart')
+
 
 def _create_directory_structure_if_necessary(site_folder):
     for subfolder in ('database', 'static', 'virtualenv', 'source'):
