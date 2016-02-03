@@ -1,5 +1,5 @@
 from fabric.contrib.files import append, exists, sed
-from fabric.api import env, local, run
+from fabric.api import env, local, run, sudo
 import random
 
 REPO_URL = 'https://github.com/Kienen/tdd.git'  
@@ -14,8 +14,9 @@ def deploy():
     _update_static_files(source_folder)
     _update_database(source_folder)
 
-    sudo('service uwsgi restart')
+    
     sudo('service nginx restart')
+    sudo('service uwsgi restart')
 
 
 def _create_directory_structure_if_necessary(site_folder):
@@ -33,10 +34,7 @@ def _get_latest_source(source_folder):
 def _update_settings(source_folder, site_name):
     settings_path = source_folder + '/superlists/settings.py'
     sed(settings_path, "DEBUG = True", "DEBUG = False")  
-    sed(settings_path,
-        'ALLOWED_HOSTS =.+$',
-        'ALLOWED_HOSTS = ["%s"]' % (site_name,)  
-    )
+    sed(settings_path, 'DOMAIN = "localhost"', 'DOMAIN = "%s"' % (site_name,))
     secret_key_file = source_folder + '/superlists/secret_key.py'
     if not exists(secret_key_file):  
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
